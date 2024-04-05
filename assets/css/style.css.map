@@ -1,0 +1,200 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Reddit Mono", monospace;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.todo-app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url(../images/18949432.jpg) center/cover no-repeat;
+}
+.todo-app .wrap {
+  background-image: linear-gradient(to right, rgb(0, 174, 255), rgb(119, 0, 255));
+  padding: 3rem;
+  box-shadow: 0 0 0.5rem rgb(144, 144, 144);
+  border-radius: 1rem;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: start;
+}
+.todo-app .wrap .task-add .task-label {
+  text-align: center;
+  font-size: 5rem;
+  font-weight: 800;
+  color: rgb(255, 255, 255);
+  margin-bottom: 5rem;
+}
+.todo-app .wrap .task-add .task-todo-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.todo-app .wrap .task-add .task-todo-input .task-todo-input-item {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  font-size: 1.8rem;
+  border: 0.3rem solid rgb(190, 40, 254);
+  border-radius: 0.5rem;
+  outline: none;
+}
+.todo-app .wrap .task-add .task-todo-input .btn-addTodo {
+  color: rgb(0, 0, 0);
+}
+.todo-app .wrap .task-add .task-todo-input .btn-addTodo:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+}
+.todo-app .wrap .task-add .task-compelete-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 5rem 0 2rem 0;
+  color: rgb(255, 255, 255);
+}
+.todo-app .wrap .task-add .task-compelete-process {
+  position: relative;
+  flex: 1;
+  background-color: rgb(255, 255, 255);
+  border-radius: 2rem;
+  border: 0.5rem solid rgb(190, 40, 254);
+  min-height: 3rem;
+  overflow: hidden;
+}
+.todo-app .wrap .task-add .task-compelete-process .task-compelete-persent {
+  position: absolute;
+  min-height: inherit;
+  width: 100%;
+}
+.todo-app .wrap .task-add .task-compelete-process .task-compelete-persent-number {
+  position: absolute;
+  font-size: 1.5rem;
+  font-weight: 700;
+  left: 50%;
+  top: 0.5rem;
+  transform: translateX(-50%);
+}
+.todo-app .wrap .task-list {
+  padding: 1rem 0.5rem;
+  overflow-y: auto;
+  height: 70vh;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.5rem;
+  list-style-type: none;
+}
+.todo-app .wrap .task-list::-webkit-scrollbar {
+  width: 0;
+}
+.todo-app .wrap .task-list .task-item {
+  margin: 1rem 0;
+  min-height: 5rem;
+  padding: 1.5rem;
+  box-shadow: 0 0 0.5rem rgb(144, 144, 144);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.todo-app .wrap .task-list .task-item:hover {
+  background-color: rgba(111, 130, 255, 0.518);
+  transition: 0.5s;
+}
+.todo-app .wrap .task-list .task-item .task-view, .todo-app .wrap .task-list .task-item .task-edit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.todo-app .wrap .task-list .task-item .task-view .view {
+  display: flex;
+  align-items: center;
+}
+.todo-app .wrap .task-list .task-item .task-view .view .task-item-check-box {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 0.2rem solid rgba(178, 4, 252, 0.847);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+.todo-app .wrap .task-list .task-item .task-view .view .task-item-check-box:checked {
+  background-color: rgba(178, 4, 252, 0.847);
+}
+.todo-app .wrap .task-list .task-item .task-view .view .task-item-check-box:checked::after {
+  display: block;
+  content: "";
+  width: 0.7rem;
+  height: 1.6rem;
+  border-right: 0.3rem solid rgb(255, 255, 255);
+  border-bottom: 0.3rem solid rgb(255, 255, 255);
+  transform: translate(0.8rem, 0) rotate(45deg);
+}
+.todo-app .wrap .task-list .task-item .task-view .view .task-view-item {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+.todo-app .wrap .task-list .task-item .task-view .view .task-item-check-box:checked + .task-view-item {
+  text-decoration: line-through;
+  color: rgb(95, 95, 95);
+}
+.todo-app .wrap .task-list .task-item .task-edit {
+  display: none;
+}
+.todo-app .wrap .task-list .task-item .task-edit .task-edit-input {
+  font-size: 1.8rem;
+  flex: 1;
+  margin-right: 1.5rem;
+  outline: none;
+  padding: 0.8rem 1rem;
+}
+.todo-app .wrap .task-list .edit .task-view {
+  display: none;
+}
+.todo-app .wrap .task-list .edit .task-edit {
+  display: flex;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+}
+.action .btn-edit {
+  background-color: rgb(0, 38, 255);
+}
+.action .btn-download {
+  background-color: rgb(38, 255, 0);
+}
+.action .btn-delete {
+  background-color: rgb(255, 0, 0);
+}
+.action .btn-save {
+  background-color: rgb(0, 255, 110);
+}
+.action .btn-cancel {
+  color: rgb(0, 0, 0);
+}
+
+.btn {
+  font-size: 2rem;
+  padding: 0 1.5rem;
+  height: 4rem;
+  margin-left: 1rem;
+  color: rgb(255, 255, 255);
+  border-color: rgb(190, 40, 254);
+  border-radius: 1rem;
+}
+.btn:hover {
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+}/*# sourceMappingURL=style.css.map.map */

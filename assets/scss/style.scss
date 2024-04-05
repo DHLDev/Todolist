@@ -1,0 +1,221 @@
+$white-background-color:rgb(255,255,255);
+$pupler-background-color:rgba(178, 4, 252, 0.847);
+$text-white-color:rgb(255,255,255);
+$text-black-color:rgb(0, 0, 0);
+$checked-text:rgb(95, 95, 95);
+$box-shadow-box:rgb(144, 144, 144);
+$liner-gradient-left:rgb(0, 174, 255);
+$liner-gradient-right:rgb(119, 0, 255);
+$hover-background-color:rgba(111, 130, 255, 0.518);
+$hover-btn-color:rgb(0, 0, 0);
+$border-color:rgb(190, 40, 254);
+$btn-edit:rgb(0, 38, 255);
+$btn-download:rgb(38, 255, 0);
+$btn-save:rgb(0, 255, 110);
+$btn-delete:rgb(255, 0, 0);
+$btn-add:rgb(255, 44, 44);
+*{
+      padding: 0;
+      margin: 0;
+      font-family: "Reddit Mono", monospace;
+      font-optical-sizing: auto;
+      font-style: normal;
+}
+html{
+      font-size: 62.5%;
+}
+.todo-app{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: url(../images/18949432.jpg) center /cover  no-repeat;
+      .wrap{
+            background-image: linear-gradient(to right, $liner-gradient-left,$liner-gradient-right );
+            padding: 3rem;
+            box-shadow: 0 0 0.5rem $box-shadow-box;
+            border-radius: 1rem;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: start;
+            .task-add{
+                  .task-label{
+                        text-align: center;
+                        font-size: 5rem;
+                        font-weight: 800;
+                        color: $text-white-color;
+                        margin-bottom: 5rem;
+                  }
+                  .task-todo-input{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        .task-todo-input-item{
+                              flex:1;
+                              padding:  1rem 1.5rem;
+                              font-size: 1.8rem;
+                              border: 0.3rem solid $border-color;
+                              border-radius: 0.5rem;
+                              outline:none
+                        }
+                        .btn-addTodo{
+                              color: $text-black-color;
+                              &:hover{
+                                    color: $text-white-color;
+                                    background-color: $hover-btn-color;
+                              }
+                        }
+                  }
+                  .task-compelete-title{
+                        font-size: 3rem;
+                        font-weight: 700;
+                        margin: 5rem 0 2rem 0;
+                        color: $text-white-color;
+                  }
+                  .task-compelete-process{
+                        position: relative;
+                        flex: 1;
+                        background-color: $white-background-color;
+                        border-radius: 2rem;
+                        border: 0.5rem solid $border-color;
+                        min-height: 3rem;
+                        overflow: hidden;
+                        .task-compelete-persent{
+                              position: absolute;
+                              min-height: inherit;
+                              width: 100%;
+                              // background-color: aqua;
+                        }
+                        .task-compelete-persent-number{
+                              position: absolute;
+                              font-size: 1.5rem;
+                              font-weight: 700;
+                              left: 50%;
+                              top: 0.5rem;
+                              transform: translateX(-50%);
+                        }
+                  }
+
+            }
+            .task-list{
+                  padding: 1rem 0.5rem;
+                  overflow-y: auto;
+                  height:70vh;
+                  background-color: $white-background-color;
+                  border-radius: 0.5rem;
+                  list-style-type: none;
+                  &::-webkit-scrollbar{
+                        width: 0;
+                  }
+
+                  .task-item{
+                        margin: 1rem 0;
+                        min-height: 5rem;
+                        padding: 1.5rem;
+                        box-shadow: 0 0 0.5rem $box-shadow-box;
+                        border-radius: 0.5rem;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content:center ;
+                        align-items: center;
+                        &:hover{
+                              background-color: $hover-background-color;
+                              // color: $text-white-color;
+                              transition: 0.5s;
+                        }
+                        .task-view,.task-edit{
+                              display: flex;
+                              justify-content: space-between;
+                              align-items: center;
+                              width: 100%;
+                        }
+                        .task-view{
+                              .view{
+                                    display: flex;
+                                    align-items: center;
+                                    .task-item-check-box{
+                                          appearance: none;
+                                          width: 2.6rem;
+                                          height: 2.6rem;
+                                          border: 0.2rem solid $pupler-background-color;
+                                          border-radius: 0.5rem;
+                                          cursor: pointer;
+                                          margin-right: 1rem;
+                                          &:checked{
+                                                background-color: $pupler-background-color;
+                                          }
+                                          &:checked::after{
+                                                display: block;
+                                                content: "";
+                                                width: 0.7rem;
+                                                height: 1.6rem;
+                                                border-right: 0.3rem solid $text-white-color;
+                                                border-bottom: 0.3rem solid $text-white-color;
+                                                transform:translate(0.8rem,0) rotate(45deg) ;
+                                          }
+                                    }
+                                    .task-view-item{
+                                          font-size: 1.8rem;
+                                          font-weight: 700;
+                                    }
+                                    .task-item-check-box:checked + .task-view-item{
+                                          text-decoration: line-through;
+                                          color:$checked-text ;
+                                    }
+                              }
+                        }
+                        .task-edit{
+                              display: none;
+                              .task-edit-input{
+                                    font-size: 1.8rem;
+                                    flex: 1;
+                                    margin-right: 1.5rem;
+                                    outline: none;
+                                    padding: 0.8rem 1rem;
+                              }
+                        }
+                        
+                  }
+                  .edit{
+                        .task-view{
+                              display: none;
+                        }
+                        .task-edit{
+                              display: flex;
+                        }
+                  }
+            }
+      }
+}
+.action{
+      display: flex;
+      align-items: center;
+      .btn-edit{
+            background-color: $btn-edit;
+      }
+      .btn-download{
+            background-color: $btn-download;
+      }
+      .btn-delete{
+            background-color: $btn-delete;
+      }
+      .btn-save{
+            background-color: $btn-save;
+      }
+      .btn-cancel{
+            color: $text-black-color;
+      }
+}
+.btn{
+      font-size: 2rem;
+      padding: 0 1.5rem;
+      height: 4rem;
+      margin-left:1rem;
+      color: $text-white-color;
+      border-color:$border-color;
+      border-radius: 1rem;
+      &:hover{
+            background-color: $hover-btn-color;
+            color: $text-white-color;
+      }
+}
