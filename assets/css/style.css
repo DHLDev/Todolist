@@ -72,6 +72,7 @@ html {
   position: absolute;
   min-height: inherit;
   width: 100%;
+  background-color: red;
 }
 .todo-app .wrap .task-add .task-compelete-process .task-compelete-persent-number {
   position: absolute;
@@ -81,88 +82,133 @@ html {
   top: 0.5rem;
   transform: translateX(-50%);
 }
-.todo-app .wrap .task-list {
+.todo-app .wrap .task-form-list {
+  background-color: rgb(255, 255, 255);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.todo-app .wrap .task-form-list .check-all {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.todo-app .wrap .task-form-list .check-all .check-all-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.todo-app .wrap .task-form-list .check-all .check-all-wrap .checkbox-all-box {
+  width: 2rem;
+  height: 2rem;
+}
+.todo-app .wrap .task-form-list .check-all .check-all-wrap .checkbox-all-box:checked::after {
+  display: block;
+  content: "";
+  width: 0.5rem;
+  height: 1rem;
+  border-right: 0.3rem solid rgb(255, 255, 255);
+  border-bottom: 0.3rem solid rgb(255, 255, 255);
+  transform: translate(0.5rem, 0.1rem) rotate(45deg);
+}
+.todo-app .wrap .task-form-list .check-all .check-all-wrap .check-all-title {
+  margin-left: 1rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+}
+.todo-app .wrap .task-form-list .check-all .clear-todo {
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+.todo-app .wrap .task-form-list .task-list {
   padding: 1rem 0.5rem;
   overflow-y: auto;
   height: 70vh;
-  background-color: rgb(255, 255, 255);
   border-radius: 0.5rem;
   list-style-type: none;
 }
-.todo-app .wrap .task-list::-webkit-scrollbar {
+.todo-app .wrap .task-form-list .task-list::-webkit-scrollbar {
   width: 0;
 }
-.todo-app .wrap .task-list .task-item {
+.todo-app .wrap .task-form-list .task-list .task-item {
   margin: 1rem 0;
   min-height: 5rem;
   padding: 1.5rem;
   box-shadow: 0 0 0.5rem rgb(144, 144, 144);
+  background-color: rgb(255, 255, 255);
   border-radius: 0.5rem;
-  display: flex;
   flex-direction: column;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
-.todo-app .wrap .task-list .task-item:hover {
+.todo-app .wrap .task-form-list .task-list .task-item:hover {
   background-color: rgba(111, 130, 255, 0.518);
   transition: 0.5s;
 }
-.todo-app .wrap .task-list .task-item .task-view, .todo-app .wrap .task-list .task-item .task-edit {
+.todo-app .wrap .task-form-list .task-list .task-item .task-view, .todo-app .wrap .task-form-list .task-list .task-item .task-edit {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
-.todo-app .wrap .task-list .task-item .task-view .view {
+.todo-app .wrap .task-form-list .task-list .task-item .task-view .view {
   display: flex;
   align-items: center;
 }
-.todo-app .wrap .task-list .task-item .task-view .view .task-item-check-box {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  width: 2.6rem;
-  height: 2.6rem;
-  border: 0.2rem solid rgba(178, 4, 252, 0.847);
-  border-radius: 0.5rem;
-  cursor: pointer;
+.todo-app .wrap .task-form-list .task-list .task-item .task-view .view .task-item-check-box {
   margin-right: 1rem;
 }
-.todo-app .wrap .task-list .task-item .task-view .view .task-item-check-box:checked {
-  background-color: rgba(178, 4, 252, 0.847);
-}
-.todo-app .wrap .task-list .task-item .task-view .view .task-item-check-box:checked::after {
-  display: block;
-  content: "";
-  width: 0.7rem;
-  height: 1.6rem;
-  border-right: 0.3rem solid rgb(255, 255, 255);
-  border-bottom: 0.3rem solid rgb(255, 255, 255);
-  transform: translate(0.8rem, 0) rotate(45deg);
-}
-.todo-app .wrap .task-list .task-item .task-view .view .task-view-item {
+.todo-app .wrap .task-form-list .task-list .task-item .task-view .view .task-view-item {
   font-size: 1.8rem;
   font-weight: 700;
 }
-.todo-app .wrap .task-list .task-item .task-view .view .task-item-check-box:checked + .task-view-item {
+.todo-app .wrap .task-form-list .task-list .task-item .task-view .view .task-item-check-box:checked + .task-view-item {
   text-decoration: line-through;
   color: rgb(95, 95, 95);
 }
-.todo-app .wrap .task-list .task-item .task-edit {
+.todo-app .wrap .task-form-list .task-list .task-item .task-edit {
   display: none;
 }
-.todo-app .wrap .task-list .task-item .task-edit .task-edit-input {
+.todo-app .wrap .task-form-list .task-list .task-item .task-edit .task-edit-input {
   font-size: 1.8rem;
   flex: 1;
   margin-right: 1.5rem;
   outline: none;
   padding: 0.8rem 1rem;
 }
-.todo-app .wrap .task-list .edit .task-view {
+.todo-app .wrap .task-form-list .task-list .edit .task-view {
   display: none;
 }
-.todo-app .wrap .task-list .edit .task-edit {
+.todo-app .wrap .task-form-list .task-list .edit .task-edit {
   display: flex;
+}
+.todo-app .wrap .task-form-list .selected-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.todo-app .wrap .task-form-list .selected-option .select-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.3rem solid rgb(190, 40, 254);
+  border-radius: 0.5rem;
+}
+.todo-app .wrap .task-form-list .selected-option .select-wrap .select-item {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1rem;
+  border: 0.1rem solid rgb(190, 40, 254);
+  outline: none;
+}
+.todo-app .wrap .task-form-list .selected-option .select-wrap .select-item:hover {
+  cursor: pointer;
+  transition: 0.5s;
+}
+.todo-app .wrap .task-form-list .selected-option .select-wrap .check-filter {
+  background-color: rgb(190, 40, 254);
 }
 
 .action {
@@ -197,4 +243,27 @@ html {
 .btn:hover {
   background-color: rgb(0, 0, 0);
   color: rgb(255, 255, 255);
+}
+
+.checkbox {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 0.2rem solid rgba(178, 4, 252, 0.847);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.checkbox:checked {
+  background-color: rgba(178, 4, 252, 0.847);
+}
+.checkbox:checked::after {
+  display: block;
+  content: "";
+  width: 0.7rem;
+  height: 1.6rem;
+  border-right: 0.3rem solid rgb(255, 255, 255);
+  border-bottom: 0.3rem solid rgb(255, 255, 255);
+  transform: translate(0.8rem, 0) rotate(45deg);
 }/*# sourceMappingURL=style.css.map */

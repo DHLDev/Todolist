@@ -26,10 +26,9 @@ export function CreatStore(reducer){
             connect(selector = state => state){
                   return component => (prop,...args) => 
                         component(Object.assign({},prop,selector(state),...args))
-
             },
             dispatch(action,...args){
-                  state = reducer(state,action,args)
+                  state = reducer(state,action,...args)
                   RenderHTML()
             }
       }

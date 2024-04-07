@@ -3,6 +3,7 @@ $pupler-background-color:rgba(178, 4, 252, 0.847);
 $text-white-color:rgb(255,255,255);
 $text-black-color:rgb(0, 0, 0);
 $checked-text:rgb(95, 95, 95);
+$check-filter:rgb(190, 40, 254);
 $box-shadow-box:rgb(144, 144, 144);
 $liner-gradient-left:rgb(0, 174, 255);
 $liner-gradient-right:rgb(119, 0, 255);
@@ -24,10 +25,13 @@ $btn-add:rgb(255, 44, 44);
 html{
       font-size: 62.5%;
 }
-.todo-app{
+@mixin display-flex{
       display: flex;
       justify-content: center;
       align-items: center;
+}
+.todo-app{
+      @include display-flex();
       height: 100vh;
       background: url(../images/18949432.jpg) center /cover  no-repeat;
       .wrap{
@@ -84,7 +88,7 @@ html{
                               position: absolute;
                               min-height: inherit;
                               width: 100%;
-                              // background-color: aqua;
+                              background-color: red
                         }
                         .task-compelete-persent-number{
                               position: absolute;
@@ -97,91 +101,128 @@ html{
                   }
 
             }
-            .task-list{
-                  padding: 1rem 0.5rem;
-                  overflow-y: auto;
-                  height:70vh;
+            .task-form-list{
                   background-color: $white-background-color;
-                  border-radius: 0.5rem;
-                  list-style-type: none;
-                  &::-webkit-scrollbar{
-                        width: 0;
-                  }
-
-                  .task-item{
-                        margin: 1rem 0;
-                        min-height: 5rem;
-                        padding: 1.5rem;
-                        box-shadow: 0 0 0.5rem $box-shadow-box;
-                        border-radius: 0.5rem;
+                  padding: 1rem;
+                  border-radius: 1rem;
+                  .check-all{
                         display: flex;
-                        flex-direction: column;
-                        justify-content:center ;
                         align-items: center;
-                        &:hover{
-                              background-color: $hover-background-color;
-                              // color: $text-white-color;
-                              transition: 0.5s;
-                        }
-                        .task-view,.task-edit{
-                              display: flex;
-                              justify-content: space-between;
-                              align-items: center;
-                              width: 100%;
-                        }
-                        .task-view{
-                              .view{
-                                    display: flex;
-                                    align-items: center;
-                                    .task-item-check-box{
-                                          appearance: none;
-                                          width: 2.6rem;
-                                          height: 2.6rem;
-                                          border: 0.2rem solid $pupler-background-color;
-                                          border-radius: 0.5rem;
-                                          cursor: pointer;
-                                          margin-right: 1rem;
-                                          &:checked{
-                                                background-color: $pupler-background-color;
-                                          }
-                                          &:checked::after{
-                                                display: block;
-                                                content: "";
-                                                width: 0.7rem;
-                                                height: 1.6rem;
-                                                border-right: 0.3rem solid $text-white-color;
-                                                border-bottom: 0.3rem solid $text-white-color;
-                                                transform:translate(0.8rem,0) rotate(45deg) ;
-                                          }
-                                    }
-                                    .task-view-item{
-                                          font-size: 1.8rem;
-                                          font-weight: 700;
-                                    }
-                                    .task-item-check-box:checked + .task-view-item{
-                                          text-decoration: line-through;
-                                          color:$checked-text ;
+                        justify-content: space-between;
+                        .check-all-wrap{
+                              @include display-flex();
+                              .checkbox-all-box{
+                                    width: 2rem;
+                                    height: 2rem;
+                                    &:checked::after{
+                                          display: block;
+                                          content: "";
+                                          width: 0.5rem;
+                                          height: 1rem;
+                                          border-right: 0.3rem solid $text-white-color;
+                                          border-bottom: 0.3rem solid $text-white-color;
+                                          transform:translate(0.5rem,0.1rem) rotate(45deg) ;
                                     }
                               }
-                        }
-                        .task-edit{
-                              display: none;
-                              .task-edit-input{
+                              .check-all-title{
+                                    margin-left: 1rem;
                                     font-size: 1.8rem;
-                                    flex: 1;
-                                    margin-right: 1.5rem;
-                                    outline: none;
-                                    padding: 0.8rem 1rem;
+                                    font-weight: 600;
+                                    color: $text-black-color;
                               }
                         }
-                        
-                  }
-                  .edit{
-                        .task-view{
-                              display: none;
+                        .clear-todo{
+                              font-size: 1.8rem;
+                              cursor: pointer;
                         }
-                        .task-edit{
-                              display: flex;
+                  }
+                  .task-list{
+                        padding: 1rem 0.5rem;
+                        overflow-y: auto;
+                        height:70vh;                    
+                        border-radius: 0.5rem;
+                        list-style-type: none;
+                        &::-webkit-scrollbar{
+                              width: 0;
+                        }
+                        .task-item{
+                              margin: 1rem 0;
+                              min-height: 5rem;
+                              padding: 1.5rem;
+                              box-shadow: 0 0 0.5rem $box-shadow-box;
+                              background-color: $white-background-color;
+                              border-radius: 0.5rem;
+                              flex-direction: column;
+                              @include display-flex();
+                              &:hover{
+                                    background-color: $hover-background-color;
+                                    transition: 0.5s;
+                              }
+                              .task-view,.task-edit{
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                    width: 100%;
+                              }
+                              .task-view{
+                                    .view{
+                                          display: flex;
+                                          align-items: center;
+                                          .task-item-check-box{
+                                                margin-right: 1rem;
+                                          }
+                                          .task-view-item{
+                                                font-size: 1.8rem;
+                                                font-weight: 700;
+                                          }
+                                          .task-item-check-box:checked + .task-view-item{
+                                                text-decoration: line-through;
+                                                color:$checked-text ;
+                                          }
+                                    }
+                              }
+                              .task-edit{
+                                    display: none;
+                                    .task-edit-input{
+                                          font-size: 1.8rem;
+                                          flex: 1;
+                                          margin-right: 1.5rem;
+                                          outline: none;
+                                          padding: 0.8rem 1rem;
+                                    }
+                              }
+                              
+                        }
+                        .edit{
+                              .task-view{
+                                    display: none;
+                              }
+                              .task-edit{
+                                    display: flex;
+                              }
+                        }
+                  }
+                  .selected-option{
+                        @include display-flex();
+                        .select-wrap{
+                              @include display-flex();
+                              border: 0.3rem solid $border-color;
+                              border-radius: 0.5rem;
+                              .select-item{
+                                    display: block;
+                                    font-size: 1rem;
+                                    font-weight: 600;
+                                    padding: 1rem;
+                                    border:0.1rem solid $border-color;
+                                    outline: none;
+                                    &:hover{
+                                          cursor: pointer;
+                                          transition: 0.5s;
+                                    }
+                              }
+                              .check-filter{
+                                    background-color: $check-filter;
+                              }
                         }
                   }
             }
@@ -217,5 +258,25 @@ html{
       &:hover{
             background-color: $hover-btn-color;
             color: $text-white-color;
+      }
+}
+.checkbox{
+      appearance: none;
+      width: 2.6rem;
+      height: 2.6rem;
+      border: 0.2rem solid $pupler-background-color;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      &:checked{
+            background-color: $pupler-background-color;
+      }
+      &:checked::after{
+            display: block;
+            content: "";
+            width: 0.7rem;
+            height: 1.6rem;
+            border-right: 0.3rem solid $text-white-color;
+            border-bottom: 0.3rem solid $text-white-color;
+            transform:translate(0.8rem,0) rotate(45deg) ;
       }
 }
