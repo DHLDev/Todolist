@@ -4,6 +4,7 @@ import { connect } from '../store.js';
 
 const connecter = connect()
 function TaskAdd({todos}){
+      let persentelement = document.querySelector('.task-compelete-persent')
       let persent = 0 + '%';
       if(todos.length > 0){
             persent = ((todos.filter(todo => todo.status).length / todos.length) * 100 ) + '%';
